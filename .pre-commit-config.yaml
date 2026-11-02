@@ -1,0 +1,21 @@
+repos:
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.103.0
+    hooks:
+      - id: terraform_fmt
+        files: ^iac/.*\.tf$
+      - id: terraform_validate
+        files: ^iac/.*\.tf$
+      - id: terraform_checkov
+        files: ^iac/
+        args:
+        - --args=--quiet
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-added-large-files
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: no-commit-to-branch
+      - id: requirements-txt-fixer
